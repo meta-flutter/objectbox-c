@@ -1,8 +1,6 @@
-set(PROJECT_NAME objectbox-c-examples-tasks-c-gen)
+set(TARGET objectbox-c-examples-tasks-c-gen)
 
-project(${PROJECT_NAME} C)
-
-add_executable(${PROJECT_NAME}
+add_executable(${TARGET}
         main.c
         # Note: the flatcc sources are embedded into this project for convenience:
         ../../external/flatcc-src/builder.c
@@ -10,5 +8,5 @@ add_executable(${PROJECT_NAME}
         ../../external/flatcc-src/refmap.c
         )
 
-target_link_libraries(${PROJECT_NAME} objectbox)
-target_include_directories(${PROJECT_NAME} PRIVATE ../../external ../../include)
+target_include_directories(${TARGET} PRIVATE objectbox)
+target_link_libraries(${TARGET} objectbox)

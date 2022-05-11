@@ -1,10 +1,6 @@
-set(PROJECT_NAME objectbox-c-examples-tasks)
+set(TARGET objectbox-c-examples-tasks)
 
-project(${PROJECT_NAME} C)
-
-include_directories(../../external ../../include)
-
-add_executable(${PROJECT_NAME}
+add_executable(${TARGET}
         main.c
         # Note: the flatcc sources are embedded into this project for convenience:
         ../../external/flatcc-src/builder.c
@@ -12,8 +8,9 @@ add_executable(${PROJECT_NAME}
         ../../external/flatcc-src/refmap.c
         )
 
-target_link_libraries(${PROJECT_NAME} objectbox)
+target_include_directories(${TARGET} PRIVATE objectbox)
+target_link_libraries(${TARGET} objectbox)
 
 IF (CMAKE_ANDROID)
-    target_link_libraries(${PROJECT_NAME} log)
+    target_link_libraries(${TARGET} log)
 ENDIF ()

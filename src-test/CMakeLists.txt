@@ -1,8 +1,6 @@
-set(CMAKE_C_STANDARD 99)
+set(TARGET objectbox-c-test)
 
-include_directories(../include ../external)
-
-add_executable(objectbox-c-test
+add_executable(${TARGET}
         plain-c-test-main.c
         c_test_objects.c
         c_test_objects.h
@@ -11,8 +9,9 @@ add_executable(objectbox-c-test
         ../external/flatcc-src/refmap.c
         )
 
-target_link_libraries(objectbox-c-test objectbox)
+target_include_directories(${TARGET} PRIVATE objectbox)
+target_link_libraries(${TARGET} objectbox)
 
 IF (CMAKE_ANDROID)
-    target_link_libraries(objectbox-c-test log)
+    target_link_libraries(${TARGET} log)
 ENDIF ()
